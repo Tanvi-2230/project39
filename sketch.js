@@ -46,13 +46,12 @@ function setup() {
   
   ground = createSprite(300,180,400,20);
   ground.addImage("ground",groundImage);
-  ground.x = ground.width /2;
   ground.velocityX = -(6 + 3*score/100);
   
-  gameOver = createSprite(camera.position.x+50,70);
+  gameOver = createSprite(camera.position.x+50,30);
   gameOver.addImage(gameOverImg);
   
-  restart = createSprite(camera.position.x+50,120);
+  restart = createSprite(camera.position.x+50,80);
   restart.addImage(restartImg);
   
   gameOver.scale = 0.5;
@@ -85,10 +84,9 @@ function draw() {
   
     trex.velocityY = trex.velocityY + 0.8
   
-    if (ground.x < 0){
-      ground.x = -200;
+    if(ground.x < -200){
+      ground.x = camera.position.x;
     }
-  
     trex.collide(invisibleGround);
     spawnClouds();
     spawnObstacles();
